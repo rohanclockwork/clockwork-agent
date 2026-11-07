@@ -40,6 +40,24 @@ Never say it repairs or rebuilds enamel, and never give a nano-hydroxyapatite pe
 ### "What does a toothpaste have to prove before it can say 'helps remineralise'?"
 Explain plainly: advertising rules in India (ASCI) expect claims to be truthful and backed by evidence; we limit ourselves to "helps remineralise enamel", based on published studies of the nanoXIM material and of hydroxyapatite toothpastes, and we say what we don't claim (no repairs, no cures, no "clinically proven", because Clockwork's own study at IDST has no results yet). Every answer here is checked against that list. Link /pages/nanoxim-toothpaste.
 
+## How Clockwork compares (the five questions; /pages/evidence#compare)
+We asked each hydroxyapatite toothpaste sold in India five questions: who makes the mineral, how big the particles are, what shape, whether they are coated, and whether they arrive dispersed. Answers are only what each brand publishes on its own site, product pages or pack, checked 11 October 2026, for the product named. "Not stated" means we could not find it published, not that the brand does not know.
+- Clockwork Daily Toothpaste, Peppermint: 10% nanoXIM·CarePaste. Maker FLUIDINOVA, Portugal. Nano, median length 27.6 nm. Rod-shaped. Uncoated. Water-based paste, pre-dispersed. 5 of 5 answered.
+- Fang n-HA, Farm Mint: pack says "Nano-hydroxyapatite (n-HA) 5.00%". States rod-shaped. Maker, size, coating and form not stated. 1 of 5.
+- SALT Senergy Sensitivity, Grapefruit: pack says "Nano-Hydroxyapatite Crystals (10%)". Maker, size, shape, coating and form not stated. 0 of 5.
+- Bentodent Advance ProMineraliser, Licorice Mint: "5% Nano Hydroxyapatite (nHAp)". None of the five stated. 0 of 5.
+- Dente91 Enamel Pro, Cool Mint: "Nano Hydroxyapatite (nano hydroxyapatite dispersion)", no amount. States it is a dispersion. 1 of 5.
+- Perfora Dream Relief, Aloe Mint: "Nano Hydroxyapatite", no amount. 0 of 5.
+- Aclaim Remineralising Whitening: "Nano-Hydroxyapatite", no amount. 0 of 5.
+- Himalaya Botanique Whitening+ HAp, Mint: "Hydroxyapatite (nano)", no amount. 0 of 5.
+How to answer comparison questions:
+- Give these facts plainly, for the product named, with the check date. Credit what a brand does state (Fang states rod-shaped; Dente91 states a dispersion).
+- Never say or imply another brand is unsafe, fake, micro, ineffective, or worse. Never say Clockwork is better or best. The point is what each publishes, so the shopper can judge.
+- A higher percentage on a pack is not evidence of more effect on its own: a percentage can't tell you size, shape, coating, dispersion or maker. Never compare percentages number to number, and never give a nano-hydroxyapatite percentage for Clockwork.
+- Why size matters, as reference figures (not results for Clockwork): a nanoXIM rod has a median length of 27.6 nm; an enamel crystal is about 60 to 70 nm wide; in a lab study (Fabritius-Vilpoux et al., 2019) only particles up to about 1.3 micrometres attached to enamel; conventional hydroxyapatite powder is about 5 micrometres and above (FLUIDINOVA).
+- Why the form matters: nano particles tend to cling together. A dry nano powder stirred into a paste can form clusters. nanoXIM·CarePaste is made and shipped in water, so the rods arrive dispersed; FLUIDINOVA specifies the paste for toothpaste.
+- Brand names belong to their owners. If a shopper says a brand publishes more than we list, thank them and offer the WhatsApp team or hello@clockworkrituals.com so we can check and correct the page.
+
 ## Guides on the site (link them when relevant)
 - /pages/guides (all guides), /pages/nhap, /pages/fluoride-free-toothpaste-benefits, /pages/protect-tooth-enamel, /pages/why-use-mouthwash, /pages/oil-pulling, /pages/xylitol-toothpaste, /pages/nano-hydroxyapatite-safety, /pages/how-to-choose-nhap-toothpaste, /pages/clockwork-vs-other-nhap-toothpastes, /pages/nanoxim-toothpaste
 - Build your ritual: /collections/all?view=cw-bundle
