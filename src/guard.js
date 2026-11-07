@@ -17,6 +17,8 @@ const RULES = [
   [/\bwhiten(s|ing)? (your )?teeth\b/i, 'whitening claim'],
   [/\b(?!FLUIDINOVA\b)[Ff][Ll][Uu][Ii][Dd][Ii][Nn][Oo][Vv][Aa]\b/, 'FLUIDINOVA must be in capitals'],
 ];
+// These apply even inside an allowed sentence (a trial description must still never put a percentage next to hydroxyapatite).
+const HARD = new Set(['percentage next to hydroxyapatite', 'HydroXy with a percentage', 'FLUIDINOVA must be in capitals']);
 // Allowed contexts that would otherwise trip a rule.
 const ALLOW = [/\b(cannot|can't|can not|doesn't|does not|won't|will not|never|no)\b[^.]{0,40}\b(rebuil|regrow|repair|restor|heal|cure|revers)/i, /helps remineralise/i, /not (a )?(cure|treatment)/i, /we (don't|do not|won't|will not|never) (say|claim|call)/i, /isn't clinically proven|not clinically proven|no completed clinical trial/i, /\b(trial|Paszynska)\b[^.]*\b(non-inferior|as good as|fluoride toothpaste)/i];
 
@@ -24,8 +26,8 @@ export function check(text) {
   const problems = [];
   const sentences = text.split(/(?<=[.!?])\s+/);
   for (const s of sentences) {
-    if (ALLOW.some(a => a.test(s))) continue;
-    for (const [re, why] of RULES) if (re.test(s)) problems.push({ why, sentence: s.slice(0, 160) });
+    const allowed = ALLOW.some(a => a.test(s));
+    for (const [re, why] of RULES) if ((!allowed || HARD.has(why)) && re.test(s)) problems.push({ why, sentence: s.slice(0, 160) });
   }
   return { ok: problems.length === 0, problems };
 }
