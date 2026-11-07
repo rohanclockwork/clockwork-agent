@@ -1,0 +1,14 @@
+import { build } from '../src/knowledge.js';
+import { run } from '../src/tools.js';
+import { check } from '../src/guard.js';
+let fail = 0; const ok = (c, m) => { if (!c) { fail++; console.log('FAIL', m); } else console.log('ok  ', m); };
+const bad = ['It rebuilds your enamel.', 'Clockwork is non-toxic.', 'Our 10% nano-hydroxyapatite formula.', 'It is clinically proven.', 'Dentist recommended toothpaste.', "India's first nHAp paste.", 'Made by Fluidinova.', 'HydroXy 10% complex.', 'It prevents cavities.', 'Safe to swallow for kids.', 'The best toothpaste for you.'];
+const good = ['It helps remineralise enamel.', 'Clockwork Daily has 10% nanoXIM·CarePaste and 10% xylitol.', 'Enamel cannot regrow, but its surface can regain minerals.', 'In an 18-month trial, a 10% hydroxyapatite toothpaste was non-inferior to a fluoride toothpaste.', 'We don\'t call it clinically proven.', 'Made by FLUIDINOVA in Portugal.'];
+for (const b of bad) ok(!check(b).ok, 'blocks: ' + b);
+for (const g of good) ok(check(g).ok, 'allows: ' + g);
+const k = await build(); ok(k.catalogue.length >= 3, 'catalogue loaded: ' + k.catalogue.length); ok(k.pack.split(/\s+/).length > 5000, 'pack words: ' + k.pack.split(/\s+/).length);
+const r1 = await run('recommend_bag', { adults: 1, kids: 0 }, {}); console.log(JSON.stringify(r1));
+const r2 = await run('recommend_bag', { adults: 2, kids: 1, months: 4, kids_flavour: 'orange-vanilla' }, {}); console.log(JSON.stringify(r2));
+ok(r2.adult_tubes === 4 && r2.kids_tubes === 2, 'household maths');
+const ctx = { cards: [], actions: [] }; await run('show_products', { items: [{ variant_id: r1.items[0].variant_id }] }, ctx); ok(ctx.cards.length === 1 && ctx.cards[0].price > 0, 'card built');
+console.log(fail ? `${fail} failed` : 'all passed'); process.exit(fail ? 1 : 0);

@@ -1,0 +1,11 @@
+{
+  "name": "clockwork-agent",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Ask Clockwork: the Clockwork website agent (Claude).",
+  "main": "src/server.js",
+  "scripts": { "start": "node src/server.js", "test": "node test/run.js" },
+  "engines": { "node": ">=20" },
+  "dependencies": { "@anthropic-ai/sdk": "1.6.0", "express": "5.3.0" }
+}
