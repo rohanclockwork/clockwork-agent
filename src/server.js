@@ -66,9 +66,14 @@ function systemFor(page, memory) {
 async function converse(model, system, messages, ctx) {
   const msgs = messages.map(m => ({ ...m }));
   for (let i = 0; i < 6; i++) {
-    const r = await client.messages.create({ model, max_tokens: 700, system, tools: TOOLS, messages: msgs });
+    const r = await client.messages.create({ model, max_tokens: 1200, system, tools: TOOLS, messages: msgs });
     addCost(model, r.usage || {});
-    if (r.stop_reason !== 'tool_use') return r.content.filter(b => b.type === 'text').map(b => b.text).join('\n').trim();
+    if (r.stop_reason !== 'tool_use') {
+      let text = r.content.filter(b => b.type === 'text').map(b => b.text).join('\n').trim();
+      // Never show a half sentence: if the reply ran out of room, cut back to the last full paragraph or sentence.
+      if (r.stop_reason === 'max_tokens') { const para = text.lastIndexOf('\n\n'); const sent = Math.max(text.lastIndexOf('. '), text.lastIndexOf('.\n')); text = para > text.length * 0.6 ? text.slice(0, para) : sent > 0 ? text.slice(0, sent + 1) : text; }
+      return text;
+    }
     msgs.push({ role: 'assistant', content: r.content });
     const results = [];
     for (const b of r.content) if (b.type === 'tool_use') {
