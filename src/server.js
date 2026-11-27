@@ -118,5 +118,5 @@ app.post('/chat', async (req, res) => {
 });
 
 await build().catch(e => console.error('initial build failed', e));
-startRefresh(6);
+startRefresh(1);   // 27 Nov: re-read the live shop every hour (products, prices, stock, guides, policies)
 app.listen(PORT, () => console.log(JSON.stringify({ evt: 'listening', port: PORT, fast: FAST, deep: DEEP })));
