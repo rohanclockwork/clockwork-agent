@@ -20,8 +20,8 @@ export const TOOLS = [
     input_schema: {
       type: 'object',
       properties: {
-        adults: { type: 'integer', minimum: 0, maximum: 8, description: 'People aged 13 and over using Clockwork Daily.' },
-        kids: { type: 'integer', minimum: 0, maximum: 6, description: 'Children aged 3 to 12 using Clockwork Kids.' },
+        adults: { type: 'integer', minimum: 0, maximum: 20, description: 'People aged 13 and over using Clockwork Daily.' },
+        kids: { type: 'integer', minimum: 0, maximum: 20, description: 'Children aged 3 to 12 using Clockwork Kids.' },
         months: { type: 'integer', minimum: 1, maximum: 12, description: 'How many months to stock for. Default 2.' },
         kids_flavour: { type: 'string', enum: ['strawberry-watermelon', 'orange-vanilla', 'either'] },
       },
@@ -33,7 +33,7 @@ export const TOOLS = [
     description: 'Show product cards with an Add button in the chat. The shopper adds them; never say you added anything.',
     input_schema: {
       type: 'object',
-      properties: { items: { type: 'array', maxItems: 4, items: { type: 'object', properties: { variant_id: { type: 'integer' }, quantity: { type: 'integer', minimum: 1, maximum: 6 }, note: { type: 'string', description: 'One short line on why, within the claims rules.' } }, required: ['variant_id'] } } },
+      properties: { items: { type: 'array', maxItems: 4, items: { type: 'object', properties: { variant_id: { type: 'integer' }, quantity: { type: 'integer', minimum: 1, maximum: 60 }, note: { type: 'string', description: 'One short line on why, within the claims rules.' } }, required: ['variant_id'] } } },
       required: ['items'],
     },
   },
@@ -70,7 +70,7 @@ function cheapest(A, K, flav) {
   for (const h of kidH) { const v = firstAvail(h); if (v) opts.push({ a: 0, k: 1, price: v.price, mrp: v.mrp, id: v.id }); }
   const setH = flav === 'either' || !flav ? Object.values(SETS) : [SETS[flav]];
   for (const h of setH) { const v = firstAvail(h); if (v) opts.push({ a: 1, k: 1, price: v.price, mrp: v.mrp, id: v.id }); }
-  const key = (a, k) => a * 100 + k, memo = new Map();
+  const key = (a, k) => a * 1000 + k, memo = new Map();
   const best = (a, k) => {
     if (a <= 0 && k <= 0) return { price: 0, picks: [] };
     const m = memo.get(key(a, k)); if (m) return m;
