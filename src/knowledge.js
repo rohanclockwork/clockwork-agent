@@ -37,7 +37,18 @@ export async function build() {
     catch (e) { console.warn('policy skipped', p, e.message); }
   }
   const catalogue = [];
-  for (const h of PRODUCTS) {
+  // 27 Nov: every product published on the shop is picked up on each rebuild, so new launches reach the chat on their own.
+  // Leave a product out with the tag hide-from-chat (partner-kit and preview-only are left out too).
+  let handles = PRODUCTS;
+  if (!process.env.PRODUCT_HANDLES) {
+    try {
+      const all = (await (await get(`${SHOP}/products.json?limit=250`)).json()).products || [];
+      const skip = /^(hide-from-chat|partner-kit|preview-only)$/i;
+      const found = all.filter(p => !(p.tags || []).some(t => skip.test(t))).map(p => p.handle);
+      if (found.length) handles = [...new Set([...PRODUCTS, ...found])];
+    } catch (e) { console.warn('product list skipped', e.message); }
+  }
+  for (const h of handles) {
     try {
       const p = await (await get(`${SHOP}/products/${h}.js`)).json();
       catalogue.push({
